@@ -1,0 +1,20 @@
+Teraz przechodzimy do właściwego testu, który składa się z 36 matryc wyświetlanych
+kolejno po sobie. Przypominamy: w tym teście zadanie polega na odkryciu reguł,
+według których zmieniają się obrazki w dwóch pierwszych kolumnach oraz w dwóch
+pierwszych wierszach matrycy 3 na 3 obrazków. Dla trzeciego wiersza/kolumny ostatni
+element musi zostać przez Ciebie uzupełniony tak, aby spełniał odkryte przez Ciebie reguły.
+Najpierw, przez 30 sekund prezentowana będzie tylko matryca – staraj
+się wymyśleć, jak powinien poprawnie wyglądać brakujący element.
+Każda matryca posiada tylko jedno prawidłowe rozwiązanie.
+Następnie, po upływie 30 sekund, u dołu ekranu pojawi się osiem opcji odpowiedzi.
+Jedyne poprawne Twoim zdaniem rozwiązanie wybierz spośród tych opcji
+poprzez ustawienie czerwonej ramki (przesuwanejscrollem myszki) a następnie wciśnięcie
+lewego przycisku myszki.
+
+Pamiętaj: zależy nam, abyś starał się wymyśleć prawidłowe rozwiązanie dla
+każdej matrycy zanim pojawią się opcję odpowiedzi (bo potem może być zbyt mało
+czasu, by rozwiązać zadanie). Twoim wynikiem w teście będzie liczba prawidłowo
+wskazanych brakujących elementów – staraj się wykonywać test możliwie jak najbardziej poprawnie!
+
+
+ Połóż prawą rękę na myszce. Aby przejść do kolejnej jednostki testu naciśnij lewą ręką spacje.

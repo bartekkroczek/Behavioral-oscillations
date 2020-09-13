@@ -1,0 +1,18 @@
+PART_ID,Trial_no,Trial_type,CSI,Stim_letter,Key_pressed,letter_choose,Rt,Corr
+test3M20,1,training,10,O,z,Q,0.3888280391693115,False
+test3M20,2,training,10,O,no_key,no letter,-1.0,no_ans
+test3M20,3,training,11,O,n,no letter,1.1841070652008057,True
+test3M20,4,training,12,Q,z,no letter,0.5902400016784668,True
+test3M20,5,experiment,10,Q,z,no letter,0.5503978729248047,True
+test3M20,6,experiment,11,C,x,no letter,0.7351930141448975,True
+test3M20,7,experiment,12,Q,m,no letter,1.2946600914001465,False
+test3M20,8,training,12,C,x,no letter,0.7459959983825684,True
+test3M20,9,training,10,O,n,no letter,0.843048095703125,True
+test3M20,10,experiment,11,Q,z,no letter,0.43901896476745605,True
+test3M20,11,experiment,10,Q,z,no letter,0.7094378471374512,True
+test3M20,12,experiment,12,C,x,no letter,0.6958129405975342,True
+test3M20,13,training,11,Q,m,no letter,0.5869019031524658,False
+test3M20,14,training,11,Q,z,no letter,0.4157271385192871,True
+test3M20,15,experiment,12,Q,z,no letter,0.3504490852355957,True
+test3M20,16,experiment,11,Q,z,no letter,0.6385149955749512,True
+test3M20,17,experiment,10,C,x,no letter,0.5964808464050293,True

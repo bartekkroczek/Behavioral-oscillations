@@ -1,0 +1,10 @@
+W powyższym przykładzie liczba kropek na każdym obrazku rośnie od 1 do 3,
+od lewej do prawej kolumny macierzy. Dodatkowo, w każdym wierszu/każdej
+kolumnie występuje po jednym egzemplarzu kwadratu, trójkąta oraz koła.
+Zatem brakujący element musi zawierać trzy kropki (bo jest w trzeciej kolumnie)
+oraz musi być kwadratem (gdyż w trzecim wierszu/ kolumnie tej figury brakuje).
+Reguły te spełnia jedynie odpowiedź nr 5.
+
+
+Teraz pokażemy Ci trzy matryce przykładowe, na których możesz przetrenować wykonywanie testu.
+ Połóż prawą rękę na myszce. Aby przejść do kolejnej jednostki testu naciśnij lewą ręką spacje.

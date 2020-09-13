@@ -1,0 +1,3 @@
+PART_ID,Trial_no,Trial_type,CSI,Stim_letter,Key_pressed,letter_choose,Rt,Corr
+testM20,1,training,10,C,x,C,0.508476972579956,True
+testM20,2,training,10,D,no_key,no letter,-1.0,no_ans
