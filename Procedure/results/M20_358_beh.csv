@@ -1,0 +1,8 @@
+PART_ID,Trial_no,Trial_type,CSI,Stim_letter,Key_pressed,letter_choose,Rt,Corr
+M20,1,training,10,←,no_key,no_letter,-1.0,no_ans
+M20,2,training,10,↓,no_key,no_letter,-1.0,no_ans
+M20,3,training,10,↓,no_key,no_letter,-1.0,no_ans
+M20,4,training,10,↑,no_key,no_letter,-1.0,no_ans
+M20,5,experiment,12,→,no_key,no_letter,-1.0,no_ans
+M20,6,experiment,10,→,no_key,no_letter,-1.0,no_ans
+M20,7,experiment,11,←,no_key,no_letter,-1.0,no_ans

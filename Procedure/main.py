@@ -5,6 +5,7 @@ import codecs
 import csv
 import random
 from os.path import join
+from statistics import mean
 
 import yaml
 from psychopy import visual, event, logging, gui, core
@@ -17,7 +18,7 @@ from itertools import combinations_with_replacement, product
 
 logging.LogFile(join('results', 'PART_ID' + '.log'), level=logging.INFO)  # errors logging
 RESULTS = list()
-RESULTS.append(['PART_ID', 'Trial_no', 'Trial_type', 'CSI', 'Stim_letter', 'Key_pressed', 'letter_choose', 'Rt', 'Corr'])
+RESULTS.append(['PART_ID', 'Trial_no', 'Trial_type', 'CSI', 'Stim_letter', 'Key_pressed', 'letter_choose', 'Rt', 'Corr', 'Stimulus Time'])
 
 
 @atexit.register
@@ -27,6 +28,16 @@ def save_beh_results():
         beh_writer.writerows(RESULTS)
     logging.flush()
 
+
+def show_image(win, file_name, size, key='f7'):
+    image = visual.ImageStim(win=win, image=file_name, interpolate=True, size=size)
+    image.draw()
+    win.flip()
+    clicked = event.waitKeys(keyList=[key, 'return', 'space'])
+    if clicked == [key]:
+        logging.critical('Experiment finished by user! {} pressed.'.format(key[0]))
+        exit(0)
+    win.flip()
 
 def read_text_from_file(file_name, insert=''):
     """
@@ -115,8 +126,7 @@ def main():
     que = visual.Circle(win, radius=conf['QUE_RADIUS'], fillColor=conf['QUE_COLOR'], lineColor=conf['QUE_COLOR'])
     stim = visual.TextStim(win, text='', height=conf['STIM_SIZE'], color=conf['STIM_COLOR'])
 
-    # mask = visual.ImageStim(win, image='mask2.png', size=(conf['STIM_FRAME_SIZE'], conf['STIM_FRAME_SIZE']),
-    #                         pos=[conf['STIM_RECT_SHIFT'], 0])
+    mask = visual.ImageStim(win, image='mask4.png', size=(conf['STIM_SIZE'], conf['STIM_SIZE']))
     separator = [' ' * conf['REACTION_KEYS_SEP']] * len(conf['REACTION_KEYS'])
     question_frame = visual.TextStim(win, text="".join(["".join(x) for x in zip(conf['STIM_LETTERS'], separator)]), height=30,
                                      pos=(100, -300), color=conf['FIX_CROSS_COLOR'], wrapWidth=10000)
@@ -126,32 +136,61 @@ def main():
     # === Training ===
 
     show_info(win, join('.', 'messages', 'hello.txt'))
-    show_info(win, join('.', 'messages', 'before_training.txt'))
-
-    csi_list = [conf['TRAINING_CSI']] * conf['NO_TRAINING_TRIALS']
+    
+    stim_time = conf['STIM_TIME']
+    csi_list = [conf['TRAINING_CSI']] * conf['NO_TRAINING_TRIALS'][0]
     for csi in csi_list:
-        key_pressed, rt, stim_letter, choice, corr = run_trial(win, conf, fix_cross, csi, que, stim, clock, question_frame, question_label)
-        RESULTS.append([PART_ID, trial_no, 'training', csi, stim_letter, key_pressed, choice, rt, corr])
-        trial_no += 1
+        key_pressed, rt, stim_letter, choice, corr = run_trial(win, conf, fix_cross, csi, que, stim, clock, question_frame, question_label, mask, 30)
+        RESULTS.append([PART_ID, trial_no, 'training', csi, stim_letter, key_pressed, choice, rt, corr, 30])
 
+        feedb = "Poprawnie" if corr else "Niepoprawnie"
+        feedb = visual.TextStim(win, text=feedb, height=50, color=conf['FIX_CROSS_COLOR'])
+        feedb.draw()
+        win.flip()
+        core.wait(1)
+        win.flip()
+
+        trial_no += 1
+        
+    show_info(win, join('.', 'messages', 'before_training.txt'))
+    csi_list = [conf['TRAINING_CSI']] * conf['NO_TRAINING_TRIALS'][1]
+    for csi in csi_list:
+        key_pressed, rt, stim_letter, choice, corr = run_trial(win, conf, fix_cross, csi, que, stim, clock, question_frame, question_label, mask, 18)
+        RESULTS.append([PART_ID, trial_no, 'training', csi, stim_letter, key_pressed, choice, rt, corr, 18])
+
+        feedb = "Poprawnie" if corr else "Niepoprawnie"
+        feedb = visual.TextStim(win, text=feedb, height=50, color=conf['FIX_CROSS_COLOR'])
+        feedb.draw()
+        win.flip()
+        core.wait(1)
+        win.flip()
+
+        trial_no += 1
         # === Experiment ===
 
     show_info(win, join('.', 'messages', 'before_experiment.txt'))
+    
     for _ in range(conf['NO_BLOCKS']):
         for _ in range(conf['INTRA_BLOCK_TRAINIG']):
             csi = random.choice(range(conf['CSI_BAND'][0], conf['CSI_BAND'][1]+1))
-            key_pressed, rt, stim_letter, choice, corr = run_trial(win, conf, fix_cross, csi, que, stim, clock, question_frame, question_label)
-            RESULTS.append([PART_ID, trial_no, 'training', csi, stim_letter, key_pressed, choice, rt, corr])
+            key_pressed, rt, stim_letter, choice, corr = run_trial(win, conf, fix_cross, csi, que, stim, clock, question_frame, question_label, mask, stim_time)
+            RESULTS.append([PART_ID, trial_no, 'training', csi, stim_letter, key_pressed, choice, rt, corr, stim_time])
             trial_no += 1
         
         csi_list = list(range(conf['CSI_BAND'][0], conf['CSI_BAND'][1]+1))
         random.shuffle(csi_list)
-
+        corrs = list()
         for csi in csi_list:
-            key_pressed, rt, stim_letter, choice, corr = run_trial(win, conf, fix_cross, csi, que, stim, clock, question_frame, question_label)
-            RESULTS.append([PART_ID, trial_no, 'experiment', csi, stim_letter, key_pressed, choice, rt, corr])
+            key_pressed, rt, stim_letter, choice, corr = run_trial(win, conf, fix_cross, csi, que, stim, clock, question_frame, question_label, mask, stim_time)
+            corrs.append(corr)
+            RESULTS.append([PART_ID, trial_no, 'experiment', csi, stim_letter, key_pressed, choice, rt, corr, stim_time])
             trial_no += 1
-        show_info(win, join('.', 'messages', 'break.txt'))
+        if mean(corrs) > 0.9 and stim_time > 12:
+            stim_time -= 1
+        elif mean(corrs) < 0.6 and stim_time < 18:
+            stim_time += 1
+
+        show_image(win, 'break.jpg', size = (SCREEN_RES['width'], SCREEN_RES['height']))
 
         # === Cleaning time ===
     save_beh_results()
@@ -160,10 +199,11 @@ def main():
     win.close()
 
 
-def run_trial(win, conf, fix_cross, CSI, que, stim, clock, question_frame, question_label):
+def run_trial(win, conf, fix_cross, CSI, que, stim, clock, question_frame, question_label, mask, stim_time):
     
     que_pos = random.choice([-conf['STIM_SHIFT'], conf['STIM_SHIFT']])
     stim.pos = [-que_pos, 0] # always on the other site
+    mask.pos = [-que_pos, 0]
     stim.text = random.choice(conf['STIM_LETTERS'])
 
     for _ in range(conf['FIX_CROSS_TIME']):
@@ -180,8 +220,11 @@ def run_trial(win, conf, fix_cross, CSI, que, stim, clock, question_frame, quest
         for _ in range(conf['QUE_SPEED']):
             que.draw()
             win.flip()
-    for _ in range(conf['STIM_TIME']):
+    for _ in range(stim_time):
         stim.draw()
+        win.flip()
+    for _ in range(conf['MASK_TIME']):
+        mask.draw()
         win.flip()
 
     question_frame.draw()
@@ -196,7 +239,7 @@ def run_trial(win, conf, fix_cross, CSI, que, stim, clock, question_frame, quest
     else:
         key_pressed = 'no_key'
         rt = -1.0
-        corr = 'no_ans'
+        corr = False
         choice = 'no_letter'
 
     return key_pressed, rt, stim.text, choice, corr

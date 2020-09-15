@@ -1,0 +1,8 @@
+PART_ID,Trial_no,Trial_type,CSI,Stim_letter,Key_pressed,letter_choose,Rt,Corr
+M20,1,training,10,←,left,←,0.664384126663208,True
+M20,2,training,10,↓,left,←,0.560244083404541,False
+M20,3,training,11,↓,right,→,0.38005685806274414,False
+M20,4,training,12,↓,down,↓,0.44661498069763184,True
+M20,5,experiment,10,←,left,←,0.30309414863586426,True
+M20,6,experiment,12,←,right,→,0.1963651180267334,False
+M20,7,experiment,11,↑,up,↑,0.20615792274475098,True

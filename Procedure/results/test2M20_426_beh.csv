@@ -1,5 +1,0 @@
-PART_ID,Trial_no,Trial_type,CSI,Stim_letter,Key_pressed,letter_choose,Rt,Corr
-test2M20,1,training,10,Q,z,Q,0.5578169822692871,True
-test2M20,2,training,10,O,no_key,no letter,-1.0,no_ans
-test2M20,3,training,10,Q,z,no letter,0.5593111515045166,True
-test2M20,4,training,10,C,x,no letter,1.144191026687622,True
