@@ -16,7 +16,6 @@ from itertools import combinations_with_replacement, product
 # GLOBALS
 
 
-logging.LogFile(join('results', 'PART_ID' + '.log'), level=logging.INFO)  # errors logging
 RESULTS = list()
 RESULTS.append(['PART_ID', 'Trial_no', 'Trial_type', 'CSI', 'Stim_letter', 'Key_pressed', 'letter_choose', 'Rt', 'Corr', 'Stimulus Time'])
 
@@ -119,6 +118,7 @@ def main():
         return None
 
     PART_ID = info['IDENTYFIKATOR'] + info[u'P\u0141EC'] + info['WIEK']
+    logging.LogFile(join('results', PART_ID + '.log'), level=logging.INFO)  # errors logging
     logging.info('FRAME RATE: {}'.format(FRAME_RATE))
     logging.info('SCREEN RES: {}'.format(SCREEN_RES.values()))
 
@@ -220,18 +220,25 @@ def run_trial(win, conf, fix_cross, CSI, que, stim, clock, question_frame, quest
         for _ in range(conf['QUE_SPEED']):
             que.draw()
             win.flip()
+
+    win.callOnFlip(clock.reset)
+    event.clearEvents()
     for _ in range(stim_time):
         stim.draw()
         win.flip()
+
     for _ in range(conf['MASK_TIME']):
+        reaction = event.getKeys(keyList=list(conf['REACTION_KEYS']), timeStamped=clock)
+        if reaction:
+            break
         mask.draw()
         win.flip()
 
-    question_frame.draw()
-    question_label.draw()
-    win.callOnFlip(clock.reset)
-    win.flip()
-    reaction = event.waitKeys(keyList=list(conf['REACTION_KEYS']), maxWait=conf['REACTION_TIME']/60, timeStamped=clock)
+    if not reaction:
+        question_frame.draw()
+        question_label.draw()
+        win.flip()
+        reaction = event.waitKeys(keyList=list(conf['REACTION_KEYS']), maxWait=conf['REACTION_TIME']/60, timeStamped=clock) 
     if reaction:
         key_pressed, rt = reaction[0]
         choice = dict(zip(conf['REACTION_KEYS'], conf['STIM_LETTERS']))[key_pressed]
