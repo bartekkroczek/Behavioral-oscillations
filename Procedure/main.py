@@ -22,7 +22,7 @@ RESULTS.append(['PART_ID', 'Trial_no', 'Trial_type', 'CSI', 'Stim_letter', 'Key_
 
 @atexit.register
 def save_beh_results():
-    with open(join('results', PART_ID + '_' + str(random.choice(range(100, 1000))) + '_beh.csv'), 'w') as beh_file:
+    with open(join('results', PART_ID + '_' + str(random.choice(range(100, 1000))) + '_beh.csv'), 'w', encoding='utf-8') as beh_file:
         beh_writer = csv.writer(beh_file)
         beh_writer.writerows(RESULTS)
     logging.flush()
@@ -105,9 +105,9 @@ def main():
         abort_with_error('Info dialog terminated.')
 
     clock= core.Clock()
-    conf = yaml.load(open('config.yaml'))
+    conf = yaml.load(open('config.yaml', encoding='utf-8'))
     # === Scene init ===
-    win = visual.Window(list(SCREEN_RES.values()), fullscr=True, monitor='testMonitor', units='pix',
+    win = visual.Window(list(SCREEN_RES.values()), fullscr=False, monitor='testMonitor', units='pix',
                                        screen=0, color=conf['BACKGROUND_COLOR'])
     event.Mouse(visible=False, newPos=None, win=win)  # Make mouse invisible
     FRAME_RATE = get_frame_rate(win)
