@@ -443,7 +443,6 @@ PART_ID,Trial_no,Trial_type,CSI,Stim_letter,Key_pressed,letter_choose,Rt,Corr,St
 101M20,442,training,36,↑,up,↑,0.6228008999023587,True,17
 101M20,443,experiment,38,↓,left,←,0.5818263001274318,False,17
 101M20,444,experiment,50,←,left,←,1.5340118000749499,True,17
-101M20,445,experiment,29,↑,up,↑,0.45470030000433326,True,17
 101M20,446,experiment,51,←,left,←,0.6189651000313461,True,17
 101M20,447,experiment,24,←,left,←,0.5312955998815596,True,17
 101M20,448,experiment,34,↑,down,↓,0.8877648001071066,False,17

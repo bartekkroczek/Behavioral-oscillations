@@ -443,7 +443,6 @@ PART_ID,Trial_no,Trial_type,CSI,Stim_letter,Key_pressed,letter_choose,Rt,Corr,St
 69K21,442,training,41,←,no_key,no_letter,-1.0,False,18
 69K21,443,experiment,60,→,right,→,0.6088596000336111,True,18
 69K21,444,experiment,23,↓,down,↓,1.5697672000387684,True,18
-69K21,445,experiment,15,←,left,←,0.47281419998034835,True,18
 69K21,446,experiment,14,←,right,→,0.5801439000060782,False,18
 69K21,447,experiment,38,↓,no_key,no_letter,-1.0,False,18
 69K21,448,experiment,52,↓,down,↓,0.6742108999751508,True,18

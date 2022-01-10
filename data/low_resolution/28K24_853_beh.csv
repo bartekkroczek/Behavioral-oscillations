@@ -295,7 +295,6 @@ PART_ID,Trial_no,Trial_type,CSI,Stim_letter,Key_pressed,letter_choose,Rt,Corr,St
 28K24,294,experiment,34,↓,down,↓,0.38416190003044903,True,21
 28K24,295,experiment,44,→,right,→,0.4839448999846354,True,21
 28K24,296,experiment,19,←,down,↓,0.593644900014624,False,21
-28K24,297,experiment,38,↑,up,↑,0.5452563000144437,True,21
 28K24,298,experiment,25,→,right,→,0.5390262000728399,True,21
 28K24,299,experiment,36,↑,up,↑,0.4344502000603825,True,21
 28K24,300,experiment,56,→,right,→,0.4342762000160292,True,21

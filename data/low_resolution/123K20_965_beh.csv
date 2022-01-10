@@ -296,7 +296,6 @@ PART_ID,Trial_no,Trial_type,CSI,Stim_letter,Key_pressed,letter_choose,Rt,Corr,St
 123K20,295,experiment,56,↓,down,↓,0.5202132000122219,True,19
 123K20,296,experiment,44,↓,down,↓,0.4331958000548184,True,19
 123K20,297,experiment,50,←,left,←,0.6268273000605404,True,19
-123K20,298,experiment,32,→,right,→,0.5811341998632997,True,19
 123K20,299,experiment,46,↓,down,↓,0.8150530999992043,True,19
 123K20,300,experiment,24,←,left,←,0.49466100009158254,True,19
 123K20,301,experiment,47,↓,down,↓,1.0747495999094099,True,19

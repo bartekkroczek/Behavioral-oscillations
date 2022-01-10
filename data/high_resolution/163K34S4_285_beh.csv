@@ -1006,7 +1006,6 @@ PART_ID,Trial_no,Trial_type,CSI,Stim_letter,Key_pressed,letter_choose,Rt,Corr,St
 163K34S4,1005,experiment,66,↓,down,↓,0.5835281000472605,True,30,1
 163K34S4,1006,experiment,60,↓,down,↓,0.6758873001672328,True,30,1
 163K34S4,1007,experiment,61,↑,up,↑,0.4603034001775086,True,30,1
-163K34S4,1008,experiment,67,←,no_key,no_letter,-1.0,False,30,1
 163K34S4,1009,experiment,91,↑,up,↑,0.5359388999640942,True,30,1
 163K34S4,1010,experiment,70,←,left,←,0.4991343002766371,True,30,1
 163K34S4,1011,experiment,105,←,left,←,0.7318687001243234,True,30,1

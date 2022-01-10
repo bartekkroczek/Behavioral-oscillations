@@ -1,0 +1,15 @@
+PART_ID,Trial_no,Trial_type,CSI,Stim_letter,Key_pressed,letter_choose,Rt,Corr,Stimulus Time
+M20,1,training,10,↓,right,→,0.678063154220581,False,30
+M20,2,training,10,↑,up,↑,0.6901891231536865,True,30
+M20,3,training,10,↑,down,↓,0.9234030246734619,False,30
+M20,4,training,10,←,left,←,0.7991828918457031,True,30
+M20,5,training,10,→,left,←,0.7909359931945801,False,30
+M20,6,training,10,↑,left,←,0.5596168041229248,False,18
+M20,7,training,14,→,right,→,0.42374706268310547,True,15
+M20,8,training,17,↓,right,→,0.626777172088623,False,15
+M20,9,experiment,18,↑,left,←,0.42098307609558105,False,15
+M20,10,experiment,13,↓,left,←,0.6096901893615723,False,15
+M20,11,experiment,15,↑,right,→,0.6470708847045898,False,15
+M20,12,experiment,16,→,right,→,0.5378818511962891,True,15
+M20,13,experiment,14,↑,left,←,0.6902759075164795,False,15
+M20,14,experiment,17,↓,left,←,0.5947129726409912,False,15
